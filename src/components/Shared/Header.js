@@ -5,17 +5,17 @@ import ActiveLink from './ActiveLink';
 const Header = () => {
     const navItems = <>
         <li>
-            <ActiveLink to='/home'>
+            <ActiveLink className='font-semibold btn-sm mr-2' to='/home'>
                 Home
             </ActiveLink>
         </li>
         <li tabIndex="0">
-            <ActiveLink to='/blog'>
+            <ActiveLink className='font-semibold btn-sm mr-2' to='/blog'>
                 Blog
             </ActiveLink>
         </li>
         <li>
-            <ActiveLink to='/login'>
+            <ActiveLink className='font-semibold btn-sm mr-2' to='/login'>
                 Login
             </ActiveLink>
         </li>
