@@ -26,20 +26,15 @@ const Login = () => {
         if (emailError?.message === 'Firebase: Error (auth/user-not-found).') {
             toast.error('No user found')
         }
-        else if (emailError?.message === 'Firebase: Error (auth/wrong-password).') {
+        if (emailError?.message === 'Firebase: Error (auth/wrong-password).') {
             toast.error('Wrong Password')
-        }
-        else if (googleError?.message === 'Firebase: Error (auth/popup-closed-by-user).') {
-            toast.error('Popup closed!!')
         }
 
         if (user || googleUser || emailUser) {
             navigate(from, { replace: true });
             toast.success('Login Successful')
         }
-    }, [user, navigate, from, googleUser, emailError, emailUser, googleError]);
-
-    console.log(emailError?.message);
+    }, [user, navigate, from, googleUser, emailError, emailUser]);
 
     return (
         <div className='my-20 md:w-full mx-auto px-4 md:px-24'>

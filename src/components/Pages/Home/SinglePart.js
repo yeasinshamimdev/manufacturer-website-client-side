@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SinglePart = ({ part }) => {
-    const { name, img, description, minimumQuantity, availableQuantity, perUnitPrice } = part;
+    const { _id, name, img, description, minimumQuantity, availableQuantity, perUnitPrice } = part;
+
+    const navigate = useNavigate();
 
     return (
         <div className='border-2 p-1 rounded hover:bg-slate-100'>
@@ -15,7 +18,7 @@ const SinglePart = ({ part }) => {
                 <p className='mb-1 font-semibold'>Available Quantity: <span className='font-bold'>{availableQuantity}</span></p>
                 <p className='text-sm mt-4 font-semibold text-justify pr-4'>{description}</p>
                 <div className='flex justify-center align-middle mt-4 mb-1'>
-                    <button className='btn btn-primary text-white btn-sm px-8 py-2'>buy now</button>
+                    <button onClick={() => navigate(`/purchase/${_id}`)} className='btn btn-primary text-white btn-sm px-8 py-2'>buy now</button>
                 </div>
             </div>
         </div>

@@ -11,17 +11,17 @@ const Header = () => {
 
     const navItems = <>
         <li>
-            <ActiveLink className='font-semibold btn-sm mr-2' to='/home'>
+            <ActiveLink className='font-semibold btn-sm mr-2 text-[18px]' to='/home'>
                 Home
             </ActiveLink>
         </li>
         <li tabIndex="0">
-            <ActiveLink className='font-semibold btn-sm mr-2' to='/blog'>
+            <ActiveLink className='font-semibold btn-sm mr-2 text-[18px]' to='/blog'>
                 Blog
             </ActiveLink>
         </li>
         <li>
-            <ActiveLink className='font-semibold btn-sm mr-2' to='/login'>
+            <ActiveLink className='font-semibold btn-sm mr-2 text-[18px]' to='/login'>
                 about
             </ActiveLink>
         </li>
