@@ -5,8 +5,8 @@ const Footer = () => {
     const year = date.getFullYear();
 
     return (
-        <footer >
-            <div className="footer p-10 bg-neutral text-neutral-content">
+        <footer>
+            <div className="footer p-10 bg-neutral text-neutral-content md:px-10 px-4">
                 <div>
                     <span className="footer-title">Services</span>
                     <a className="link link-hover">Branding</a>
