@@ -4,7 +4,7 @@ import carManufacturer from '../../../img/car-garage.jpg';
 
 const Banner = () => {
     return (
-        <div className="hero py-10 md:py-20">
+        <div className="py-10 md:py-20">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img className='md:max-w-xl w-full rounded-lg shadow-2xl' src={carManufacturer} alt='car manufacture' />
                 <div className='md:mr-4'>

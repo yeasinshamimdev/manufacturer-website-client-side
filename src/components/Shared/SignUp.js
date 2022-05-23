@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle, useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import signUpImg from '../../img/sign up.png';
+import signUpImg from '../../img/sign-up.png';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] = useCreateUserWithEmailAndPassword(auth);
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [user, loading, error] = useAuthState(auth);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (emailError?.message === 'Firebase: Error (auth/email-already-in-use).') {
+            toast.error('This email is already registered!')
+        }
+
+        if (user || googleUser || emailUser) {
+            navigate(from, { replace: true });
+            toast.success('Register Successful')
+        }
+    }, [user, navigate, from, googleUser, emailUser, emailError]);
 
     const onSubmit = async (data, e) => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
         e.target.reset();
-        console.log('update done');
     };
 
     return (
@@ -96,6 +114,7 @@ const SignUp = () => {
                             </div>
                             <input className='btn btn-primary text-white mt-4 w-full' value="Sign Up" type="submit" />
                         </form>
+                        <h6 className='text-sm mt-3'>Already have an account? <Link to='/login' className='btn-link'>Login</Link></h6>
                         <div className="divider mt-8">OR</div>
                         <button onClick={() => signInWithGoogle()} className='btn mt-2 border-0 text-white w-full'>Continue With Google</button>
                     </div>

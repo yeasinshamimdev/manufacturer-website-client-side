@@ -1,8 +1,14 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import ActiveLink from './ActiveLink';
+import Loading from './Loading';
 
 const Header = () => {
+    const [user, loading, error] = useAuthState(auth);
+
     const navItems = <>
         <li>
             <ActiveLink className='font-semibold btn-sm mr-2' to='/home'>
@@ -16,14 +22,16 @@ const Header = () => {
         </li>
         <li>
             <ActiveLink className='font-semibold btn-sm mr-2' to='/login'>
-                Login
+                about
             </ActiveLink>
         </li>
-    </>
+    </>;
+
+    if (loading) return <Loading />
 
     return (
-        <div className='sticky top-0'>
-            <div className="relative navbar bg-slate-100 shadow-md md:px-10">
+        <div className='sticky top-0' >
+            <div className="navbar bg-slate-100 shadow-md md:px-10">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -44,8 +52,16 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/signup' className='btn btn-sm mr-2 hidden md:flex'>Sign Up</Link>
-                    <Link to='login' className='btn btn-sm'>Login</Link>
+                    {
+                        user ? <>
+                            <h1>{user?.displayName}</h1>
+                            <button onClick={() => signOut(auth)} className='btn btn-sm ml-2 text-white'>Sign Out</button>
+                        </> :
+                            <>
+                                <Link to='/signup' className='btn btn-sm text-white mr-2 hidden md:flex'>Sign Up</Link>
+                                <Link to='login' className='btn btn-sm text-white'>Login</Link>
+                            </>
+                    }
                 </div>
             </div>
         </div>
