@@ -8,6 +8,7 @@ import Login from './components/Shared/Login';
 import SignUp from './components/Shared/SignUp';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from './components/Shared/Loading';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/login' element={<Login />} />
       </Routes>
       <ToastContainer />
+      <Loading />
       <Footer />
     </div>
   );
