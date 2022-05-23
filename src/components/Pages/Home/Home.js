@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <div className='md:px-10'>
             <Banner />
-            <div className='grid grid-cols-1 md:grid-cols-4 mt-10 gap-4 px-4 md:px-0'>
+            <div className='grid grid-cols-1 md:grid-cols-4 mt-10 gap-4 px-4 md:px-6'>
                 {
                     ourSpecialty.map(specialty => <OurSpecialty key={specialty.id} specialty={specialty} />)
                 }
