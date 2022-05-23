@@ -9,7 +9,7 @@ const Feedback = () => {
     }
 
     return (
-        <div>
+        <div className='md:px-10'>
             <h1 className='text-center text-xl'>Leave a feedback here</h1>
             <div>
                 <form onSubmit={handleFeedback}>

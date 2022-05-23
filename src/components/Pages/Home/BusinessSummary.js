@@ -1,5 +1,5 @@
 import React from 'react';
-import { faDollarSign, faFlag, faPeopleGroup, faStar, faTools, faTvAlt } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign, faPeopleGroup, faStar, faTools } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import bgImg from '../../../img/footer.png';
 
