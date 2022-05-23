@@ -1,12 +1,14 @@
 import React from 'react';
 import Banner from './Banner';
+import BusinessSummary from './BusinessSummary';
+import Parts from './Parts';
 
 const Home = () => {
     return (
         <div className='md:px-10'>
             <Banner />
-            <h1 className='text-4xl text-center'>Parts</h1>
-
+            <Parts />
+            <BusinessSummary />
         </div>
     );
 };
