@@ -12,6 +12,8 @@ import Purchase from './components/Pages/Home/Purchase';
 import RequireAuth from './components/Shared/RequireAuth';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
+import ReviewAdd from './components/Pages/Dashboard/ReviewAdd';
+import MyOrder from './components/Pages/Dashboard/MyOrder';
 
 function App() {
   return (
@@ -24,9 +26,12 @@ function App() {
           <Purchase />
         </RequireAuth>} />
 
-        <Route path='/dashboard' element={<Dashboard />} >
-          <Route index path='profile' element={<MyProfile />} />
+        <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>} >
+          <Route index element={<MyProfile />} />
+          <Route path='review' element={<ReviewAdd />} />
+          <Route path='order' element={<MyOrder />} />
         </Route>
+
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
       </Routes>
