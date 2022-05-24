@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 const useParts = () => {
     const [parts, setParts] = useState([]);
     useEffect(() => {
-        axios.get('parts.json').then(data => setParts(data.data));
+        axios.get('http://localhost:5000/parts').then(data => setParts(data.data));
     }, []);
 
     return [parts, setParts];

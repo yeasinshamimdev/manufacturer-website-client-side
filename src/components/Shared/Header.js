@@ -4,7 +4,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import ActiveLink from './ActiveLink';
-import Loading from './Loading';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -25,9 +24,9 @@ const Header = () => {
                 about
             </ActiveLink>
         </li>
-    </>;
 
-    if (loading) return <Loading />
+        <li className='ml-3 font-bold md:hidden block'>Hi, {user?.displayName}</li>
+    </>;
 
     return (
         <div className='sticky top-0' >
@@ -54,7 +53,7 @@ const Header = () => {
                 <div className="navbar-end">
                     {
                         user ? <>
-                            <h1>{user?.displayName}</h1>
+                            <h1 className='md:block hidden'>Hi, {user?.displayName}</h1>
                             <button onClick={() => signOut(auth)} className='btn btn-sm ml-2 text-white'>Sign Out</button>
                         </> :
                             <>

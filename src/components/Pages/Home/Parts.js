@@ -14,7 +14,9 @@ const Parts = () => {
             }
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                 {
-                    parts.map(part => <SinglePart part={part} />)
+                    parts.map(part => <SinglePart
+                        key={part._id}
+                        part={part} />)
                 }
             </div>
         </section>
