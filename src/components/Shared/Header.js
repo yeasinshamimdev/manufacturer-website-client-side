@@ -20,8 +20,8 @@ const Header = () => {
             </ActiveLink>
         </li>
         <li>
-            <ActiveLink className='font-semibold btn-sm mr-2 text-[18px]' to='/login'>
-                about
+            <ActiveLink className='font-semibold btn-sm mr-2 text-[18px]' to='/dashboard'>
+                Dashboard
             </ActiveLink>
         </li>
 
