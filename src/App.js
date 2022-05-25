@@ -14,6 +14,7 @@ import Dashboard from './components/Pages/Dashboard/Dashboard';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
 import ReviewAdd from './components/Pages/Dashboard/ReviewAdd';
 import MyOrder from './components/Pages/Dashboard/MyOrder';
+import NotFound from './components/Shared/NotFound';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
 
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <ToastContainer />
       <Footer />

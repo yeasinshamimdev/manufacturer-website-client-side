@@ -1,13 +1,11 @@
-import axios from "axios";
-import { useEffect, useState } from "react"
+import { useQuery } from 'react-query'
 
 const useParts = () => {
-    const [parts, setParts] = useState([]);
-    useEffect(() => {
-        axios.get('http://localhost:5000/parts').then(data => setParts(data.data));
-    }, []);
+    const { data: parts, isLoading, refetch, isError } = useQuery('repoData', () =>
+        fetch('http://localhost:5000/parts').then(res => res.json())
+    )
 
-    return [parts, setParts];
+    return [parts, isLoading, refetch, isError]
 }
 
 export default useParts;

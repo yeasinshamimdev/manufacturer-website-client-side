@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,15 +6,19 @@ import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 import axiosPrivate from '../../../api/axiosPrivate';
 import { signOut } from 'firebase/auth';
+import useParts from '../../../hooks/useParts';
+import Loading from '../../Shared/Loading';
 
 const Purchase = () => {
     const [purchaseOrder, setPurchaseOrder] = useState({});
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { id } = useParams();
     const [user] = useAuthState(auth);
+    const [parts, isLoading, refetch, isError] = useParts();
     const navigate = useNavigate();
 
     useEffect(() => {
+        // https://agile-earth-86444.herokuapp.com/
         const url = `http://localhost:5000/parts/${id}`;
         (async () => {
             try {
@@ -23,14 +26,13 @@ const Purchase = () => {
                 setPurchaseOrder(data);
             }
             catch (error) {
-                console.log(error.response.status);
                 if (error.response.status === 401 || error.response.status === 403) {
                     signOut(auth);
                     navigate('/login')
                 }
             }
         })()
-    }, [id, navigate]);
+    }, [id, navigate, parts]);
 
     const { _id, name, img, minimumQuantity, availableQuantity, description, perUnitPrice } = purchaseOrder;
 
@@ -58,8 +60,16 @@ const Purchase = () => {
             }
         }
 
-
-
+        const updateUrl = `http://localhost:5000/parts/${_id}`
+        const { data } = axiosPrivate.put(updateUrl, {
+            availableQuantity: availableQuantity - parseInt(formData.quantity),
+            minimumQuantity: minimumQuantity
+        })
+            .then(data => {
+                if (data.data.modifiedCount) {
+                    refetch();
+                }
+            });
     }
 
     return (
