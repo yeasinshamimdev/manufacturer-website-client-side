@@ -15,6 +15,7 @@ import MyProfile from './components/Pages/Dashboard/MyProfile';
 import ReviewAdd from './components/Pages/Dashboard/ReviewAdd';
 import MyOrder from './components/Pages/Dashboard/MyOrder';
 import NotFound from './components/Shared/NotFound';
+import Payment from './components/Pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           <Route index element={<MyProfile />} />
           <Route path='review' element={<ReviewAdd />} />
           <Route path='order' element={<MyOrder />} />
+
+          <Route path='payment/:id' element={<Payment />}>
+          </Route>
         </Route>
 
         <Route path='/signup' element={<SignUp />} />

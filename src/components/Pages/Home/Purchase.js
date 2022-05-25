@@ -7,11 +7,12 @@ import { toast } from 'react-toastify';
 import axiosPrivate from '../../../api/axiosPrivate';
 import { signOut } from 'firebase/auth';
 import useParts from '../../../hooks/useParts';
-import Loading from '../../Shared/Loading';
 
 const Purchase = () => {
     const [purchaseOrder, setPurchaseOrder] = useState({});
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { register, formState: { errors }, formState: { isValid }, handleSubmit, reset } = useForm();
+    const [btnDisable, setBtnDisable] = useState(isValid);
+
     const { id } = useParams();
     const [user] = useAuthState(auth);
     const [parts, isLoading, refetch, isError] = useParts();
@@ -43,6 +44,7 @@ const Purchase = () => {
                 name, img,
                 description,
                 perUnitPrice,
+                paymentStatus: 'unpaid',
                 userName: formData.userName,
                 userEmail: formData.userEmail,
                 address: formData.address,
@@ -202,9 +204,11 @@ const Purchase = () => {
                                     {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
                                     {errors.quantity?.type === 'min' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
                                     {errors.quantity?.type === 'max' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
+
                                 </label>
                             </div>
                             <input
+                                disabled={btnDisable}
                                 className='btn btn-primary text-white mt-4 w-full' value="Purchase" type="submit" />
                         </form>
                     </div>

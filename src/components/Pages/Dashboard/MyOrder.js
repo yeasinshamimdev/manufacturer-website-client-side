@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useBooking from '../../../hooks/useBooking';
+import Loading from '../../Shared/Loading';
+import DeleteModal from './DeleteModal';
+import { useNavigate } from 'react-router-dom';
 
 const MyOrder = () => {
+    const [openModal, setOpenModal] = useState(null);
     const [booking, isLoading, refetch, isError] = useBooking();
+    const navigate = useNavigate();
 
-    const handleDateProduct = () => {
+    if (isLoading) return <Loading />
 
+    const handleDateProduct = id => {
+        const singleId = booking?.data?.find(b => b._id === id);
+        setOpenModal(singleId._id);
     };
 
     return (
         <div>
+            <h1 className='text-2xl text-center text-primary mb-6 mt-4'>Your added product: {booking?.data?.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-compact w-full">
                     <thead>
@@ -37,18 +46,30 @@ const MyOrder = () => {
                                 <td className='text-center'>{book.address}</td>
 
                                 <td>
-                                    <label
-                                        onClick={handleDateProduct}
-                                        htmlFor="productDeleteModal" className="btn btn-xs bg-red-400 text-white border-none hover:bg-red-500 mx-auto">Delete</label>
+                                    {
+                                        book.paymentStatus === 'unpaid' ? <label
+                                            onClick={() => handleDateProduct(book._id)}
+                                            htmlFor="productDeleteModal" className="btn btn-xs bg-red-400 text-white border-none hover:bg-red-500 mx-auto">Delete</label>
+                                            : ""
+                                    }
                                 </td>
 
-                                <td ><button className='btn btn-xs bg-yellow-400 hover:bg-yellow-500 text-white border-none'>UnPaid</button>
+                                <td >
+                                    <button
+                                        onClick={() => navigate(`/dashboard/payment/${book._id}`)}
+                                        className='btn btn-xs bg-green-400 hover:bg-green-500 text-white border-none'>Pay now
+                                    </button>
                                 </td>
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
+            {openModal && <DeleteModal setOpenModal={setOpenModal}
+                openModal={openModal}
+                booking={booking}
+                refetch={refetch}
+            />}
         </div>
     );
 };
