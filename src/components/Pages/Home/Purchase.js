@@ -1,28 +1,65 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
+import axiosPrivate from '../../../api/axiosPrivate';
+import { signOut } from 'firebase/auth';
 
 const Purchase = () => {
     const [purchaseOrder, setPurchaseOrder] = useState({});
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { id } = useParams();
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const url = `http://localhost:5000/parts/${id}`;
-        axios.get(url).then(data => setPurchaseOrder(data.data));
-    }, [id]);
+        (async () => {
+            try {
+                const { data } = await axiosPrivate.get(url);
+                setPurchaseOrder(data);
+            }
+            catch (error) {
+                console.log(error.response.status);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login')
+                }
+            }
+        })()
+    }, [id, navigate]);
 
     const { _id, name, img, minimumQuantity, availableQuantity, description, perUnitPrice } = purchaseOrder;
 
-    const onSubmit = (data) => {
-        console.log(data);
-        toast.success('Order complete');
-        reset();
+    const onSubmit = (formData) => {
+        try {
+            const { resData } = axiosPrivate.post('http://localhost:5000/booking', {
+                productId: _id,
+                name, img,
+                description,
+                perUnitPrice,
+                userName: formData.userName,
+                userEmail: formData.userEmail,
+                address: formData.address,
+                phone: formData.phone,
+                zipCode: formData.zipCode,
+                quantity: formData.quantity
+            })
+            toast.success('Order complete');
+            reset();
+        }
+        catch (error) {
+            if (error.response.status === 401 || error.response.status === 403) {
+                signOut(auth);
+                navigate('/login')
+            }
+        }
+
+
+
     }
 
     return (

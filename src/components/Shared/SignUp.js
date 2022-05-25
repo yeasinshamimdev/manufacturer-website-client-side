@@ -18,22 +18,33 @@ const SignUp = () => {
 
     const from = location.state?.from?.pathname || "/";
 
+    const onSubmit = async (data, e) => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+        e.target.reset();
+    };
+
     useEffect(() => {
         if (emailError?.message === 'Firebase: Error (auth/email-already-in-use).') {
             toast.error('This email is already registered!')
         }
 
         if (user || googleUser || emailUser) {
+            fetch('http://localhost:5000/login', {
+                method: 'POST',
+                body: JSON.stringify({ email: user?.email }),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem('accessToken', data.token);
+                })
             navigate(from, { replace: true });
-            toast.success('Register Successful')
+            toast.success('User created successful');
         }
     }, [user, navigate, from, googleUser, emailUser, emailError]);
-
-    const onSubmit = async (data, e) => {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName: data.name });
-        e.target.reset();
-    };
 
     return (
         <div className='my-20 md:w-full mx-auto px-4 md:px-24'>

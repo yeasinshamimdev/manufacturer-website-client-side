@@ -8,7 +8,7 @@ import loginImg from '../../img/login.png';
 
 const Login = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] = useSignInWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -30,9 +30,20 @@ const Login = () => {
             toast.error('Wrong Password')
         }
 
-        if (user || googleUser || emailUser) {
-            navigate(from, { replace: true });
-            toast.success('Login Successful')
+        if (user || emailUser) {
+            fetch('http://localhost:5000/login', {
+                method: 'POST',
+                body: JSON.stringify({ email: user?.email }),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    navigate(from, { replace: true });
+                    toast.success('Login successful')
+                    localStorage.setItem('accessToken', data.token);
+                })
         }
     }, [user, navigate, from, googleUser, emailError, emailUser]);
 
