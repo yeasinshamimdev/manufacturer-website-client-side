@@ -16,6 +16,11 @@ import ReviewAdd from './components/Pages/Dashboard/ReviewAdd';
 import MyOrder from './components/Pages/Dashboard/MyOrder';
 import NotFound from './components/Shared/NotFound';
 import Payment from './components/Pages/Dashboard/Payment';
+import RequireAdmin from './components/Shared/RequireAdmin';
+import AllUsers from './components/Pages/Dashboard/AllUsers';
+import ManageOrders from './components/Pages/Dashboard/ManageOrders';
+import AddProduct from './components/Pages/Dashboard/AddProduct';
+import ManageProducts from './components/Pages/Dashboard/ManageProducts';
 
 function App() {
   return (
@@ -35,6 +40,12 @@ function App() {
 
           <Route path='payment/:id' element={<Payment />}>
           </Route>
+
+          <Route path='users' element={<RequireAdmin><AllUsers /></RequireAdmin>} />
+          <Route path='manageOrders' element={<RequireAdmin><ManageOrders /></RequireAdmin>} />
+          <Route path='addProduct' element={<RequireAdmin><AddProduct /></RequireAdmin>} />
+          <Route path='makeAdmin' element={<RequireAdmin><AllUsers /></RequireAdmin>} />
+          <Route path='manageProduct' element={<RequireAdmin><ManageProducts /></RequireAdmin>} />
         </Route>
 
         <Route path='/signup' element={<SignUp />} />
