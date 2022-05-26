@@ -4,6 +4,11 @@ import { useParams } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import useBooking from '../../../hooks/useBooking';
 import Loading from '../../Shared/Loading';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm';
+
+const stripePromise = loadStripe('pk_test_51L1NboBEc8LSbTkZWIIiOCHHSMxDigB0fLinL4XpITvStFE8eqqkVspXoJRiXOH8ALS1baVPpPCeTDRvNqV0SU6e00RRTmTgYk');
 
 const Payment = () => {
     const [booking, isLoading, refetch, isError] = useBooking();
@@ -35,9 +40,11 @@ const Payment = () => {
                     </div>
                 </div>
             </div>
-            <div className="card md:w-2/3 w-full bg-base-100 shadow-xl mt-8">
+            <div className="card md:w-2/3 w-full bg-base-100 shadow-xl my-8">
                 <div className="card-body">
-
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm singleBooking={singleBooking} />
+                    </Elements>
                 </div>
             </div>
         </div>

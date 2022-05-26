@@ -46,12 +46,9 @@ const MyOrder = () => {
                                 <td className='text-center'>{book.address}</td>
 
                                 <td>
-                                    {
-                                        book.paymentStatus === 'unpaid' ? <label
-                                            onClick={() => handleDateProduct(book._id)}
-                                            htmlFor="productDeleteModal" className="btn btn-xs bg-red-400 text-white border-none hover:bg-red-500 mx-auto">Delete</label>
-                                            : ""
-                                    }
+                                    <label
+                                        onClick={() => handleDateProduct(book._id)}
+                                        htmlFor="productDeleteModal" className="btn btn-xs bg-red-400 text-white border-none hover:bg-red-500 mx-auto">Delete</label>
                                 </td>
 
                                 <td >
