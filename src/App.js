@@ -21,6 +21,7 @@ import AllUsers from './components/Pages/Dashboard/AllUsers';
 import ManageOrders from './components/Pages/Dashboard/ManageOrders';
 import AddProduct from './components/Pages/Dashboard/AddProduct';
 import ManageProducts from './components/Pages/Dashboard/ManageProducts';
+import Portfolio from './components/Pages/Portfolio/Portfolio';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/blog' element={<Blogs />} />
+        <Route path='/portfolio' element={<Portfolio />} />
+
         <Route path='/purchase/:id' element={<RequireAuth>
           <Purchase />
         </RequireAuth>} />
@@ -41,7 +45,6 @@ function App() {
           <Route path='payment/:id' element={<Payment />}>
           </Route>
 
-          <Route path='users' element={<RequireAdmin><AllUsers /></RequireAdmin>} />
           <Route path='manageOrders' element={<RequireAdmin><ManageOrders /></RequireAdmin>} />
           <Route path='addProduct' element={<RequireAdmin><AddProduct /></RequireAdmin>} />
           <Route path='makeAdmin' element={<RequireAdmin><AllUsers /></RequireAdmin>} />

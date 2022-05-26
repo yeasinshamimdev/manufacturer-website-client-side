@@ -19,6 +19,11 @@ const Header = () => {
                 Blog
             </ActiveLink>
         </li>
+        <li tabIndex="0">
+            <ActiveLink className='font-semibold btn-sm mr-2 text-[18px]' to='/portfolio'>
+                Portfolio
+            </ActiveLink>
+        </li>
         {
             user && <li>
                 <ActiveLink className='font-semibold btn-sm mr-2 text-[18px]' to='/dashboard'>Dashboard
