@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Sports gear warehouse
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live site Link: [https://sports-gear-warehouse.web.app/](https://sports-gear-warehouse.web.app/).
 
-## Available Scripts
+Server site Link: [https://whispering-garden-12680.herokuapp.com](https://whispering-garden-12680.herokuapp.com)
 
-In the project directory, you can run:
+Stack Overflow Question: [stackoverflow question](https://stackoverflow.com/questions/72074941/i-want-deploy-my-react-js-site-in-firebase-but-i-found-this-error-how-can-i-fi)
 
-### `npm start`
+## Description:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In this sports gear warehouse site you can add sports items. You can update quantity of any items. You can delete any items from all items. Here you can restock any item quantity. In this site you also create your sports gear warehouse account. You can login with your google account, facebook account, github account also. Also here you can add new item and see them in you private my items menu. Also you can see there customer review about this site. You can send any feedback for us. In inventory page you can see all the items of this warehouse site.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Website's Features:
 
-### `npm test`
+* In this site I used React Js for client site.
+* I used nodejs for server site.
+* I used Mongodb for database.
+* I used Tailwind css for style this site.
+* Used react toastify for showing the error message.
+* I used React spinner for data loading. 
+* For Icon I used fortawesome icon.
+* I used firebase for authentication and deploy the site.
+* I used react-hook-form for input form.
+* I used React router for manage routing.
+* And for header I use tw-elements header component.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Website's Functionality
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Here you can create user by email address.
+* In this site you can login with google, facebook, github account.
+* Here you can add new item and you can see then in your my items menu.
+* You can update your inventory items. 
+* You can delete your inventory items.
+* You can read our customer review for better trust. 
+* You can send us a feedback from your user experience.
+* You can read the simple blog about some simple questions.
+* And here you can logout user.
