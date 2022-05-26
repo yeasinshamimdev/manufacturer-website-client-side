@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useBooking from '../../../hooks/useBooking';
 import Loading from '../../Shared/Loading';
 import DeleteModal from './DeleteModal';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import axiosPrivate from '../../../api/axiosPrivate';
 
 const MyOrder = () => {
     const [openModal, setOpenModal] = useState(null);
     const [booking, isLoading, refetch, isError] = useBooking();
     const navigate = useNavigate();
+
+    const { data: payment } = useQuery('payment', () => axiosPrivate.get('http://localhost:5000/payment'));
 
     if (isLoading) return <Loading />
 
@@ -15,6 +19,7 @@ const MyOrder = () => {
         const singleId = booking?.data?.find(b => b._id === id);
         setOpenModal(singleId._id);
     };
+
 
     return (
         <div>
@@ -46,16 +51,21 @@ const MyOrder = () => {
                                 <td className='text-center'>{book.address}</td>
 
                                 <td>
-                                    <label
-                                        onClick={() => handleDateProduct(book._id)}
-                                        htmlFor="productDeleteModal" className="btn btn-xs bg-red-400 text-white border-none hover:bg-red-500 mx-auto">Delete</label>
+                                    {book.paid ? "" :
+                                        <label
+                                            onClick={() => handleDateProduct(book._id)}
+                                            htmlFor="productDeleteModal" className="btn btn-xs bg-red-400 text-white border-none hover:bg-red-500 mx-auto">Delete
+                                        </label>
+                                    }
                                 </td>
 
                                 <td >
-                                    <button
-                                        onClick={() => navigate(`/dashboard/payment/${book._id}`)}
-                                        className='btn btn-xs bg-green-400 hover:bg-green-500 text-white border-none'>Pay now
-                                    </button>
+                                    {
+                                        book.paid ? <button className='btn btn-xs bg-yellow-400 hover:bg-yellow-500 text-white border-none'>{book.paymentStatus}</button> :
+                                            <button
+                                                onClick={() => navigate(`/dashboard/payment/${book._id}`)}
+                                                className='btn btn-xs bg-green-400 hover:bg-green-500 text-white border-none'>Pay now
+                                            </button>}
                                 </td>
                             </tr>)
                         }

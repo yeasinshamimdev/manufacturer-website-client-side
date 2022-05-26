@@ -44,6 +44,7 @@ const Purchase = () => {
                 name, img,
                 description,
                 perUnitPrice,
+                paymentStatus: "pending",
                 userName: formData.userName,
                 userEmail: formData.userEmail,
                 address: formData.address,

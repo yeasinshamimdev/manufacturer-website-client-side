@@ -10,16 +10,16 @@ const Login = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [user] = useAuthState(auth);
     const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] = useSignInWithEmailAndPassword(auth);
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
 
-    const onSubmit = async (data, e) => {
+    const onSubmit = async (data) => {
         await signInWithEmailAndPassword(data.email, data.password);
-        e.target.reset();
+        reset();
     };
 
     useEffect(() => {

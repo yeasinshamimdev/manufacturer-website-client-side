@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const CheckoutForm = ({ singleBooking }) => {
     const stripe = useStripe();
@@ -10,7 +11,7 @@ const CheckoutForm = ({ singleBooking }) => {
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
-    const { _id, perUnitPrice, quantity, userName, userEmail, paid } = singleBooking;
+    const { _id, name, perUnitPrice, quantity, userName, userEmail, paid } = singleBooking;
     const price = quantity * perUnitPrice;
 
     useEffect(() => {
@@ -50,9 +51,9 @@ const CheckoutForm = ({ singleBooking }) => {
         });
 
         if (error) {
-            console.log('[error]', error);
+            setCardError(error)
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            setCardError('');
         }
 
         setCardError(error?.message || '')
@@ -67,7 +68,6 @@ const CheckoutForm = ({ singleBooking }) => {
                     billing_details: {
                         name: userName,
                         email: userEmail
-
                     },
                 },
             },
@@ -80,8 +80,8 @@ const CheckoutForm = ({ singleBooking }) => {
         else {
             setCardError('');
             setTransactionId(paymentIntent.id);
-            console.log(paymentIntent);
-            setSuccess('Congrats! Your payment is completed.')
+            setSuccess('Congrats! Your payment is completed.');
+            toast.success(`Order success for ${name}`);
 
             //store payment on database
             const payment = {
@@ -99,9 +99,7 @@ const CheckoutForm = ({ singleBooking }) => {
                 .then(data => {
                     setProcessing(false);
                 })
-
         }
-
     };
 
     return (
