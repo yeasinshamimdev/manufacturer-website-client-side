@@ -35,7 +35,7 @@ const MyOrder = () => {
                             <th className='text-center'>Quantity</th>
                             <th className='text-center'>Total Price</th>
                             <th className='text-center'>Address</th>
-                            <th className='text-center'>Action</th>
+                            <th className='text-center'>Action/Transaction ID</th>
                             <th className='text-center'>Status</th>
                         </tr>
                     </thead>
@@ -52,20 +52,30 @@ const MyOrder = () => {
 
                                 <td>
                                     {book.paid ? "" :
-                                        <label
-                                            onClick={() => handleDateProduct(book._id)}
-                                            htmlFor="productDeleteModal" className="btn btn-xs bg-red-400 text-white border-none hover:bg-red-500 mx-auto">Delete
-                                        </label>
+                                        <div className='flex justify-center'>
+                                            <label
+                                                onClick={() => handleDateProduct(book._id)}
+                                                htmlFor="productDeleteModal" className="btn btn-xs bg-red-400 text-white border-none hover:bg-red-500 mx-auto">Delete
+                                            </label>
+                                        </div>
+                                    }
+                                    {
+                                        book.transactionId ? <p className='text-center'>{book.transactionId}</p> : ''
                                     }
                                 </td>
 
                                 <td >
                                     {
-                                        book.paid ? <button className='btn btn-xs bg-yellow-400 hover:bg-yellow-500 text-white border-none'>{book.paymentStatus}</button> :
-                                            <button
-                                                onClick={() => navigate(`/dashboard/payment/${book._id}`)}
-                                                className='btn btn-xs bg-green-400 hover:bg-green-500 text-white border-none'>Pay now
-                                            </button>}
+                                        book.paid ? <div className='flex justify-center'>
+                                            <button className='btn btn-xs bg-yellow-400 hover:bg-yellow-500 text-white border-none'>{book.paymentStatus}</button>
+                                        </div> :
+                                            <div className='flex justify-center'>
+                                                <button
+                                                    onClick={() => navigate(`/dashboard/payment/${book._id}`)}
+                                                    className='btn btn-xs bg-green-400 hover:bg-green-500 text-white border-none'>Pay now
+                                                </button>
+                                            </div>
+                                    }
                                 </td>
                             </tr>)
                         }
