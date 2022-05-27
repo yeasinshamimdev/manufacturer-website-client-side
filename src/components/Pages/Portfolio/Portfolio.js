@@ -24,13 +24,13 @@ const Portfolio = () => {
                         <progress className="progress progress-secondary  h-3 w-full" value="70" max="100"></progress>
 
                         <label >Node Js</label>
-                        <progress className="progress progress-primary h-3 w-full" value="70" max="100"></progress>
+                        <progress className="progress progress-primary h-3 w-full" value="50" max="100"></progress>
                         <label >Express Js</label>
-                        <progress className="progress progress-success h-3 w-full" value="100" max="100"></progress>
+                        <progress className="progress progress-success h-3 w-full" value="50" max="100"></progress>
                         <label >React Js</label>
-                        <progress className="progress progress-accent h-3 w-full" value="100" max="100"></progress>
+                        <progress className="progress progress-accent h-3 w-full" value="80" max="100"></progress>
                         <label >MongoDb</label>
-                        <progress className="progress progress-warning h-3 w-full" value="100" max="100"></progress>
+                        <progress className="progress progress-warning h-3 w-full" value="60" max="100"></progress>
                     </div>
                 </div>
             </div>
