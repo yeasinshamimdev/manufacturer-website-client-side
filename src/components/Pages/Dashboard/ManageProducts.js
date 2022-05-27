@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useParts from '../../../hooks/useParts';
 import Animation from '../../Shared/Animation';
 import DeleteParts from './DeleteParts';
+import DeleteProductModal from './DeleteProductModal';
 
 const ManageProducts = () => {
     const [parts, isLoading, refetch, isError] = useParts();
+    const [openModal, setOpenModal] = useState(null);
 
     if (isLoading) {
         return <Animation />
@@ -18,9 +20,17 @@ const ManageProducts = () => {
                     parts.map(part => <DeleteParts
                         key={part._id}
                         refetch={refetch}
+                        setOpenModal={setOpenModal}
                         part={part} />)
                 }
             </div>
+            {
+                openModal && <DeleteProductModal setOpenModal={setOpenModal}
+                    openModal={openModal}
+                    parts={parts}
+                    refetch={refetch}
+                />
+            }
         </section>
     );
 };

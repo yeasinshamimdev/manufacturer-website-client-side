@@ -1,25 +1,10 @@
-import React from 'react';
-import { toast } from 'react-toastify';
-import axiosPrivate from '../../../api/axiosPrivate';
+import React from 'react';;
 
-const DeleteParts = ({ part, refetch }) => {
+const DeleteParts = ({ part, setOpenModal }) => {
     const { _id, name, img, description, minimumQuantity, availableQuantity, perUnitPrice } = part;
 
     const handleDeletePart = id => {
-        const url = `http://localhost:5000/parts/${id}`
-        const sure = window.alert('Are you sure? You want to delete this product?');
-        if (!sure) {
-            axiosPrivate.delete(url).then(data => {
-                console.log(data);
-                if (data.data.deletedCount > 0) {
-                    toast.success('Delete successful');
-                    refetch();
-                }
-            })
-        }
-        else {
-            toast.success('Not delete');
-        }
+        setOpenModal(id)
     }
 
     return (
@@ -34,7 +19,11 @@ const DeleteParts = ({ part, refetch }) => {
                 <p className='mb-1 font-semibold'>Available Quantity: <span className='font-bold'>{availableQuantity}</span></p>
                 <p className='text-sm mt-4 font-semibold text-justify pr-4'>{description}</p>
                 <div className='flex justify-center align-middle mt-4 mb-1'>
-                    <button onClick={() => handleDeletePart(_id)} className='btn btn-primary text-white btn-sm px-8 py-2'>Delete</button>
+
+                    <label onClick={() => handleDeletePart(_id)}
+                        htmlFor="deleteProduct" className='btn bg-red-400 hover:bg-red-500 border-none  text-white btn-sm px-8 py-2'>Delete
+                    </label>
+
                 </div>
             </div>
         </div>
