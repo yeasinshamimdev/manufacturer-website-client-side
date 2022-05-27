@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 
 const useParts = () => {
     const { data: parts, isLoading, refetch, isError } = useQuery('repoData', () =>
-        fetch('http://localhost:5000/parts').then(res => res.json())
+        fetch('https://agile-earth-86444.herokuapp.com/parts').then(res => res.json())
     )
 
     return [parts, isLoading, refetch, isError]

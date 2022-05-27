@@ -12,11 +12,11 @@ const MyProfile = () => {
     const { displayName, email } = user;
 
     useEffect(() => {
-        axiosPrivate.get('http://localhost:5000/users').then(data => setUserData(data))
+        axiosPrivate.get('https://agile-earth-86444.herokuapp.com/users').then(data => setUserData(data))
     }, [userData]);
 
     const onSubmit = formData => {
-        const url = `http://localhost:5000/users/email?email=${email}`;
+        const url = `https://agile-earth-86444.herokuapp.com/users/email?email=${email}`;
         axiosPrivate.put(url, {
             formData
         })

@@ -23,7 +23,7 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
 
-        const url = `http://localhost:5000/user`;
+        const url = `https://agile-earth-86444.herokuapp.com/user`;
         axios.post(url, {
             userEmail: data.email,
             userName: data.name
@@ -37,7 +37,7 @@ const SignUp = () => {
         }
 
         if (user || googleUser || emailUser) {
-            fetch('http://localhost:5000/login', {
+            fetch('https://agile-earth-86444.herokuapp.com/login', {
                 method: 'POST',
                 body: JSON.stringify({ email: user?.email }),
                 headers: {

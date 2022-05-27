@@ -19,7 +19,7 @@ const Purchase = () => {
 
     useEffect(() => {
         // https://agile-earth-86444.herokuapp.com/
-        const url = `http://localhost:5000/parts/${id}`;
+        const url = `https://agile-earth-86444.herokuapp.com/parts/${id}`;
         (async () => {
             try {
                 const { data } = await axiosPrivate.get(url);
@@ -38,7 +38,7 @@ const Purchase = () => {
 
     const onSubmit = (formData) => {
         try {
-            const { resData } = axiosPrivate.post('http://localhost:5000/booking', {
+            const { resData } = axiosPrivate.post('https://agile-earth-86444.herokuapp.com/booking', {
                 productId: _id,
                 name, img,
                 description,
@@ -61,7 +61,7 @@ const Purchase = () => {
             }
         }
 
-        const updateUrl = `http://localhost:5000/parts/${_id}`
+        const updateUrl = `https://agile-earth-86444.herokuapp.com/parts/${_id}`
         const { data } = axiosPrivate.put(updateUrl, {
             availableQuantity: availableQuantity - parseInt(formData.quantity),
             minimumQuantity: minimumQuantity

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const useReviews = () => {
     const [review, setReview] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/review').then(data => setReview(data.data));
+        axios.get('https://agile-earth-86444.herokuapp.com/review').then(data => setReview(data.data));
     }, []);
     return [review];
 };

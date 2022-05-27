@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import axiosPrivate from '../../../api/axiosPrivate';
 import Loading from '../../Shared/Loading';
 import DeleteProductAdminModal from './DeleteProductAdminModal';
 
 const ManageOrders = () => {
-    const { data: bookings, isLoading, refetch } = useQuery('bookings', () => axiosPrivate.get('http://localhost:5000/bookings'));
+    const { data: bookings, isLoading, refetch } = useQuery('bookings', () => axiosPrivate.get('https://agile-earth-86444.herokuapp.com/bookings'));
     const [openModal, setOpenModal] = useState(null);
 
     if (isLoading) return <Loading />
@@ -14,10 +15,23 @@ const ManageOrders = () => {
         setOpenModal(id);
     }
 
+    const handlePaymentStatus = id => {
+        const url = `https://agile-earth-86444.herokuapp.com/user/booking/${id}`;
+        axiosPrivate.put(url, {
+            paymentStatus: "shipped"
+        })
+            .then(data => {
+                if (data?.data?.modifiedCount) {
+                    refetch();
+                    toast.success('Order shipped')
+                }
+            })
+    }
+
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table table-compact w-full">
+            <div className="overflow-x-auto">
+                <table className="table table-compact w-full">
                     <thead>
                         <tr>
                             <th className='text-center'>No.</th>
@@ -51,8 +65,10 @@ const ManageOrders = () => {
                                 <td className='text-center'>
                                     {
                                         book.paid ? <button
+                                            onClick={() => handlePaymentStatus(book._id)}
                                             className='btn btn-xs bg-green-400 hover:bg-green-500 text-white border-none'
-                                        >{book.paymentStatus}</button> :
+                                        >{book.paymentStatus}
+                                        </button> :
                                             <div>
                                                 <button className='btn btn-xs bg-yellow-400 hover:bg-yellow-500 text-white border-none'>Unpaid</button>
                                             </div>

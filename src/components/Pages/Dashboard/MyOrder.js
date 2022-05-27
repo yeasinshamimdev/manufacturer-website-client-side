@@ -11,7 +11,7 @@ const MyOrder = () => {
     const [booking, isLoading, refetch, isError] = useBooking();
     const navigate = useNavigate();
 
-    const { data: payment } = useQuery('payment', () => axiosPrivate.get('http://localhost:5000/payment'));
+    const { data: payment } = useQuery('payment', () => axiosPrivate.get('https://agile-earth-86444.herokuapp.com/payment'));
 
     if (isLoading) return <Loading />
 

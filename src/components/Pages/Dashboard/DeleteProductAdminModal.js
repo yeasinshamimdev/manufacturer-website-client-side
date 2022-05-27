@@ -5,7 +5,7 @@ import axiosPrivate from '../../../api/axiosPrivate';
 const DeleteProductAdminModal = ({ openModal, refetch }) => {
 
     const handleDeleteOrder = id => {
-        const url = `http://localhost:5000/booking/${id}`
+        const url = `https://agile-earth-86444.herokuapp.com/booking/${id}`
         axiosPrivate.delete(url);
         toast.success('Order delete successful');
         refetch()

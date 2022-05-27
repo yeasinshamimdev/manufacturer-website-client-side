@@ -10,7 +10,7 @@ const ReviewAdd = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        axiosPrivate.post('http://localhost:5000/review', {
+        axiosPrivate.post('https://agile-earth-86444.herokuapp.com/review', {
             data
         });
         reset();

@@ -7,7 +7,7 @@ const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        axiosPrivate.post('http://localhost:5000/addProduct', {
+        axiosPrivate.post('https://agile-earth-86444.herokuapp.com/addProduct', {
             data
         });
         reset();

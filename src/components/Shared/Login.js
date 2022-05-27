@@ -31,7 +31,7 @@ const Login = () => {
         }
 
         if (user || emailUser) {
-            fetch('http://localhost:5000/login', {
+            fetch('https://agile-earth-86444.herokuapp.com/login', {
                 method: 'POST',
                 body: JSON.stringify({ email: user?.email }),
                 headers: {

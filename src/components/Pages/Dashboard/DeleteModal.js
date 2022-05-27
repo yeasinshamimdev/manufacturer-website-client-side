@@ -7,7 +7,7 @@ const DeleteModal = ({ openModal, booking, refetch }) => {
     const deleteProduct = id => {
         const singleId = booking?.data?.find(b => b._id === id);
 
-        const url = `http://localhost:5000/booking/${singleId._id}`;
+        const url = `https://agile-earth-86444.herokuapp.com/booking/${singleId._id}`;
         axiosPrivate.delete(url)
             .then(data => {
                 if (data.data.deletedCount) {

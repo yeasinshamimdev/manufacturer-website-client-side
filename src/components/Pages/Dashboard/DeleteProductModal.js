@@ -5,7 +5,7 @@ import axiosPrivate from '../../../api/axiosPrivate';
 const DeleteProductModal = ({ openModal, refetch }) => {
 
     const handleDeleteProduct = (id) => {
-        const url = `http://localhost:5000/parts/${id}`
+        const url = `https://agile-earth-86444.herokuapp.com/parts/${id}`
 
         axiosPrivate.delete(url).then(data => {
             if (data.data.deletedCount > 0) {
@@ -22,7 +22,7 @@ const DeleteProductModal = ({ openModal, refetch }) => {
             <input type="checkbox" id="deleteProduct" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <label for="deleteProduct" class="btn btn-success btn-sm text-white btn-circle absolute right-2 top-2">✕</label>
+                    <label for="deleteProduct" className="btn btn-success btn-sm text-white btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-bold text-lg mb-14 mt-6">Are you sure! You want to delete this product?</h3>
                     <div className="modal-action">
                         <label
