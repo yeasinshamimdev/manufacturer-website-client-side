@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import notFoundImg from '../../img/notfound.png';
+import notFound from '../../img/not-found.png';
 
 const NotFound = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='grid grid-col-1 md:grid-cols-2 bg-green-400'>
+        <div className='grid grid-col-1 md:grid-cols-2'>
             <div>
-                <img className='h-4/5' src={notFoundImg} alt="not found" />
+                <img className='h-4/5 my-auto' src={notFound} alt="not found" />
             </div>
             <div className='flex justify-center py-24 px-2'>
                 <div>

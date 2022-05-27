@@ -10,12 +10,11 @@ import useParts from '../../../hooks/useParts';
 
 const Purchase = () => {
     const [purchaseOrder, setPurchaseOrder] = useState({});
-    const { register, formState: { errors }, formState: { isValid }, handleSubmit, reset } = useForm();
-    const [btnDisable, setBtnDisable] = useState(isValid);
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const { id } = useParams();
     const [user] = useAuthState(auth);
-    const [parts, isLoading, refetch, isError] = useParts();
+    const [parts, isLoading, refetch] = useParts();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -208,8 +207,7 @@ const Purchase = () => {
                                 </label>
                             </div>
                             <input
-                                disabled={btnDisable}
-                                className='btn btn-primary text-white mt-4 w-full' value="Purchase" type="submit" />
+                                className={`${errors?.quantity ? "btn-disabled" : ""} btn btn-primary text-white mt-4 w-full`} value="Purchase" type="submit" />
                         </form>
                     </div>
                 </div>

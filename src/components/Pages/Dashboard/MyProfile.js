@@ -4,7 +4,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import axiosPrivate from '../../../api/axiosPrivate';
 import { toast } from 'react-toastify';
-import Loading from '../../Shared/Loading';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
@@ -40,7 +39,7 @@ const MyProfile = () => {
             <div className='w-full px-2 my-4'>
                 <div className='border-2 py-10 ml-4 md:w-2/3 px-6'>
                     <form onSubmit={handleSubmit(onSubmit)} >
-                        <h1 className='text-center text-xl font-bold mb-4'>Add Profile Information</h1>
+                        <h1 className='text-center text-xl font-bold mb-4'>Update Profile Information</h1>
 
                         <div className="form-control w-full">
                             <label className="label">
@@ -142,7 +141,7 @@ const MyProfile = () => {
                             </label>
                         </div>
 
-                        <input className='btn btn-primary text-white mt-4 w-full' value="Add" type="submit" />
+                        <input className='btn btn-primary text-white mt-4 w-full' value="Update" type="submit" />
                     </form>
                 </div>
             </div>

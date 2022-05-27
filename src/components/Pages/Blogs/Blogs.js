@@ -15,7 +15,8 @@ const Blogs = () => {
                                 <li className='mb-2'>1. Keeping component state local where necessary</li>
                                 <li className='mb-2'>2. Memoizing React components to prevent unnecessary re-renders. </li>
                                 <li className='mb-2'>3. Lazy loading images in React. </li>
-                                <li >4. Code-splitting in React using dynamic import. </li>
+                                <li className='mb-2'>4. Code-splitting in React using dynamic import. </li>
+                                <li >5. Windowing or list virtualization in React. </li>
                             </ul>
                         </div>
                     </div>
@@ -28,7 +29,7 @@ const Blogs = () => {
                                 <li className='mb-2'>1. Using Redux to handle React state.</li>
                                 <li className='mb-2'>2.  Using React useState hooks to handle React state.</li>
                                 <li className='mb-2'>3. Using Recoil to handle React state.  </li>
-                                <li >4. Using Rematch to handle React state.</li>
+                                <li className='mb-2'>4. Using Rematch to handle React state.</li>
                                 <li >5. Using Jotai to handle React state.</li>
                             </ul>
                         </div>

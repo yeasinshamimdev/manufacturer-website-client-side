@@ -8,6 +8,7 @@ import ActiveLink from './ActiveLink';
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
 
+
     const navItems = <>
         <li>
             <ActiveLink className='font-semibold btn-sm mr-2 text-[18px]' to='/home'>

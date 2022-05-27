@@ -1,14 +1,12 @@
-# Sports gear warehouse
+# Car Parts Manufacture
 
-Live site Link: [https://sports-gear-warehouse.web.app/](https://sports-gear-warehouse.web.app/).
+Live site Link: [https://car-parts-manufactures.web.app](https://car-parts-manufactures.web.app).
 
-Server site Link: [https://whispering-garden-12680.herokuapp.com](https://whispering-garden-12680.herokuapp.com)
-
-Stack Overflow Question: [stackoverflow question](https://stackoverflow.com/questions/72074941/i-want-deploy-my-react-js-site-in-firebase-but-i-found-this-error-how-can-i-fi)
+Server site Link: [https://agile-earth-86444.herokuapp.com](https://agile-earth-86444.herokuapp.com)
 
 ## Description:
 
-In this sports gear warehouse site you can add sports items. You can update quantity of any items. You can delete any items from all items. Here you can restock any item quantity. In this site you also create your sports gear warehouse account. You can login with your google account, facebook account, github account also. Also here you can add new item and see them in you private my items menu. Also you can see there customer review about this site. You can send any feedback for us. In inventory page you can see all the items of this warehouse site.
+In this Car Parts Manufacture site an admin can add product. A user can give this site a review. In this site, you can order any product. You can delete any product from user order page. In this site you also create your car parts manufacturer account. You can login with your google account. Also you can see there customer review about this site. You can send any feedback for site. You can also pay the order and see your transaction Id.
 
 ## Website's Features:
 
@@ -16,22 +14,21 @@ In this sports gear warehouse site you can add sports items. You can update quan
 * I used nodejs for server site.
 * I used Mongodb for database.
 * I used Tailwind css for style this site.
-* Used react toastify for showing the error message.
+* Used react toastify for showing the message.
 * I used React spinner for data loading. 
 * For Icon I used fortawesome icon.
 * I used firebase for authentication and deploy the site.
-* I used react-hook-form for input form.
+* I used react-hook-form for form.
 * I used React router for manage routing.
-* And for header I use tw-elements header component.
 
 ## Website's Functionality
 
 * Here you can create user by email address.
-* In this site you can login with google, facebook, github account.
-* Here you can add new item and you can see then in your my items menu.
-* You can update your inventory items. 
-* You can delete your inventory items.
-* You can read our customer review for better trust. 
+* In this site you can login with google.
+* Here you can see car parts product on home page.
+* You can update your user profile.
+* You can delete your order's product.
+* You can read all customer review on the home page. 
 * You can send us a feedback from your user experience.
 * You can read the simple blog about some simple questions.
 * And here you can logout user.

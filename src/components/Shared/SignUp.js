@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import signUpImg from '../../img/sign-up.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const SignUp = () => {
     const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] = useCreateUserWithEmailAndPassword(auth);
@@ -21,6 +22,12 @@ const SignUp = () => {
     const onSubmit = async (data, e) => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
+
+        const url = `http://localhost:5000/user`;
+        axios.post(url, {
+            userEmail: data.email,
+            userName: data.name
+        })
         e.target.reset();
     };
 
