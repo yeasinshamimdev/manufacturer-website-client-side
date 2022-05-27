@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
 import Feedback from './Feedback';
+import InfoCar from './InfoCar';
 import OurSpecialty from './OurSpecialty';
 import Parts from './Parts';
 import Reviews from './Reviews';
@@ -22,6 +23,7 @@ const Home = () => {
                     ourSpecialty.map(specialty => <OurSpecialty key={specialty.id} specialty={specialty} />)
                 }
             </div>
+            <InfoCar />
             <Parts />
             <BusinessSummary />
             <Reviews />

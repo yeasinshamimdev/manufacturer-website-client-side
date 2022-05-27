@@ -23,7 +23,7 @@ const DeleteParts = ({ part, refetch }) => {
     }
 
     return (
-        <div className='border-2 p-1 rounded hover:bg-slate-100'>
+        <div className='p-1 rounded-lg bg-white shadow-xl'>
             <div>
                 <img className='rounded mb-4 hover:scale-105 hover:transition hover:duration-1000 hover:ease-in-out' src={img} alt="parts images" />
             </div>

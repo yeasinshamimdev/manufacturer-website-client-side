@@ -7,9 +7,9 @@ const SinglePart = ({ part }) => {
     const navigate = useNavigate();
 
     return (
-        <div className='border-2 p-1 rounded hover:bg-slate-100'>
+        <div className='p-1 rounded-lg bg-white shadow-xl'>
             <div>
-                <img className='rounded mb-4 hover:scale-105 hover:transition hover:duration-1000 hover:ease-in-out' src={img} alt="parts images" />
+                <img className='rounded-lg mb-4 hover:scale-105 hover:transition hover:duration-1000 hover:ease-in-out' src={img} alt="parts images" />
             </div>
             <div className='px-2'>
                 <h4 className='text-2xl mb-4 font-serif font-bold'>{name}</h4>
